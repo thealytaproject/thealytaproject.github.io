@@ -17,8 +17,8 @@ body {
   margin-top: -840px;
   margin-left: -1249px; 
   img.resize{
-    width:120px; /* you can use % */
-    height: auto;}
+    width:10%; /* you can use % */
+    height: 10%;}
 }
 
 @font-face {
