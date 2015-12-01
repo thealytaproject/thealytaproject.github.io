@@ -125,6 +125,7 @@ a {
   font-weight: normal;
   color: #159957; }
 .main-content p {
+  background-color: #000000
   margin-bottom: 1em; }
 .main-content code {
   padding: 2px 4px;
