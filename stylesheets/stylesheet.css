@@ -16,6 +16,9 @@ body {
   left: 50%;
   margin-top: -840px;
   margin-left: -1249px; 
+  img.resize{
+    width:720px; /* you can use % */
+    height: auto;}
 }
 
 @font-face {
