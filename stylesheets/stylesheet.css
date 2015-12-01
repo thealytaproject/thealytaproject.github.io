@@ -17,7 +17,7 @@ body {
   margin-top: -840px;
   margin-left: -1249px; 
   img.resize{
-    width:720px; /* you can use % */
+    width:120px; /* you can use % */
     height: auto;}
 }
 
