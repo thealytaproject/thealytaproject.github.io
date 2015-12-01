@@ -14,7 +14,8 @@ body {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  margin-top: -840px;
+  margin-left: -1249px; 
 }
 
 @font-face {
