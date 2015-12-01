@@ -9,6 +9,16 @@ body {
   line-height: 1.5;
   color: #606c71; }
 
+@font-face {
+  	font-family: 'Futura';
+  	src: url('Futura.eot');
+  	src: url('Futura.eot?#iefix') format('embedded-opentype'),
+  		url('Futura.woff') format('woff'),
+  		url('Futura.ttf') format('truetype');
+  	font-weight: 500;
+  	font-style: normal;
+  }
+
 a {
   color: #1e6bb8;
   text-decoration: none; }
