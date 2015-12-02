@@ -6,7 +6,7 @@ function startTimer(duration, display) {
     function timer() {
         // get the number of seconds that have elapsed since
         // startTimer() was called
-        diff = duration - (((Date('December 17, 2095 03:24:00') - start) / 1000) | 0);
+        diff = duration - (((Date.now() - start) / 1000) | 0);
 
         // does the same job as parseInt truncates the float
         minutes = (diff / 60) | 0;
@@ -29,7 +29,7 @@ function startTimer(duration, display) {
 }
 
 window.onload = function () {
-    var fiveMinutes = 60 * 5,
+    var fiveMinutes = 60 * 55,
         display = document.querySelector('#time');
     startTimer(fiveMinutes, display);
 };
