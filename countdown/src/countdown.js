@@ -1,6 +1,6 @@
 var defaultOptions = {
   date: "June 7, 2087 15:03:25",
-  refresh: 10000,
+  refresh: 100,
   offset: 0,
   onEnd: function() {
     return;
