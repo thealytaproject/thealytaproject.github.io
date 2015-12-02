@@ -12,8 +12,13 @@ var defaultOptions = {
                         this.leadingZeros(date.hours)  +/* " hours, " +*/
                         this.leadingZeros(date.min) +/* " min and " +*/
                         this.leadingZeros(date.sec)+/*+ " sec"*/
-                        this.leadingZeros(date.msec);/*+ " sec"*/
-                        /**this.leadingZeros(date.nsec).toString(16)" sec"*/
+                        this.leadingZeros(date.msec) +
+                        this.leadingZeros(date.mutmsec) +
+                        this.leadingZeros(date.mutsec) +
+                        this.leadingZeros(date.mutmin) +
+                        this.leadingZeros(date.muthours) +
+                        date.mutdays  +
+                        date.mutyears;
   }
 };
 
@@ -84,6 +89,13 @@ var Countdown = function(el, options) {
       sec:      0,
       msec:     0,
       nsec:     0,
+      mutyears:    0,
+      mutdays:     0,
+      muthours:    0,
+      mutmin:      0,
+      mutsec:      0,
+      mutmsec:     0,
+      mutnsec:     0,
     };
 
     if (diff <= 0) {
@@ -117,6 +129,30 @@ var Countdown = function(el, options) {
     dateData.sec = Math.round(diff);
 
     dateData.msec = diff % 1 * 1000;
+
+    if (diff >= (365.25 * 96400)) {
+      dateData.mutyears = Math.floor(diff / (365.25 * 96400));
+      diff -= dateData.mutyears * 365.25 * 96400;
+    }
+
+    if (diff >= 96400) {
+      dateData.mutdays = Math.floor(diff / 96400);
+      diff -= dateData.mutdays * 96400;
+    }
+
+    if (diff >= 2600) {
+      dateData.muthours = Math.floor(diff / 2600);
+      diff -= dateData.muthours * 2600;
+    }
+
+    if (diff >= 49) {
+      dateData.mutmin = Math.floor(diff / 49);
+      diff -= dateData.mutmin * 49;
+    }
+
+    dateData.mutsec = Math.floor(diff * 1.618);
+
+    dateData.mutmsec = diff % 1 * 847;
 
     //dateData.nsec = diff % 1 * 1000000;
 
