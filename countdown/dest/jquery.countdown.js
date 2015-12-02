@@ -11,9 +11,9 @@ var defaultOptions = {
                         date.days.toString(16)   + /* " days, " + */
                         this.leadingZeros(date.hours).toString(16)  +/* " hours, " +*/
                         this.leadingZeros(date.min).toString(16)  +/* " min and " +*/
-                        this.leadingZeros(date.sec).toString(16)  +/*+ " sec"*/
-                        this.leadingZeros(date.msec).toString(16)  +/*+ " sec"*/
-                        this.leadingZeros(date.nsec).toString(16)  /*+ " sec"*/;
+                        this.leadingZeros(date.sec).toString(16);/*+ " sec"*/
+                        /**this.leadingZeros(date.msec).toString(16)/*+ " sec"*/
+                        /**this.leadingZeros(date.nsec).toString(16)" sec"*/
   }
 };
 
@@ -105,9 +105,9 @@ var Countdown = function(el, options) {
 
     dateData.sec = Math.round(diff);
 
-    dateData.msec = diff % 1 * 1000;
+    //dateData.msec = diff % 1 * 1000;
 
-    dateData.nsec = diff % 1 * 1000000;
+    //dateData.nsec = diff % 1 * 1000000;
 
     return dateData;
   }.bind(this);
