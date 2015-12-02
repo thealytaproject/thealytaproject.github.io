@@ -118,7 +118,7 @@ var Countdown = function(el, options) {
     dateData.sec = Math.round(diff);
 
 
-        //dateData.msec = diff % 1 * 1000;
+        dateData.msec = diff % 1 * 1000;
 
         //dateData.nsec = diff % 1 * 1000000;
 
