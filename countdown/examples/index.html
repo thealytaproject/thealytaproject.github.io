@@ -10,14 +10,14 @@
 
     <script type="text/javascript">
       $(function() {
-        var endDate = "June 7, 2017 15:03:25";
+        var endDate = "June 7, 2087 15:03:25";
 
         $('.countdown.simple').countdown({ date: endDate });
 
         $('.countdown.styled').countdown({
           date: endDate,
           render: function(data) {
-            $(this.el).html("<div>" + this.leadingZeros(data.years, 4) + " <span>years</span></div><div>" + this.leadingZeros(data.days, 3) + " <span>days</span></div><div>" + this.leadingZeros(data.hours, 2) + " <span>hrs</span></div><div>" + this.leadingZeros(data.min, 2) + " <span>min</span></div><div>" + this.leadingZeros(data.sec, 2) + " <span>sec</span></div>" + this.leadingZeros(data.msec, 2) + " <span>msec</span></div>") + this.leadingZeros(data.nsec, 2) + " <span>msec</span></div>");
+            $(this.el).html("<div>" + this.leadingZeros(data.years, 4) + " <span>years</span></div><div>" + this.leadingZeros(data.days, 3) + " <span>days</span></div><div>" + this.leadingZeros(data.hours, 2) + " <span>hrs</span></div><div>" + this.leadingZeros(data.min, 2) + " <span>min</span></div><div>" + this.leadingZeros(data.sec, 2) + " <span>sec</span></div>");
           }
         });
 
