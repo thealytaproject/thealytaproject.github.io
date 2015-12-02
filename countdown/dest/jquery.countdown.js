@@ -13,7 +13,7 @@ var defaultOptions = {
                         this.leadingZeros(date.min) +/* " min and " +*/
                         this.leadingZeros(date.sec)+/*+ " sec"*/
                         this.leadingZeros(date.msec) +
-                        this.leadingZeros(date.mutmsec) +
+                        //this.leadingZeros(date.mutmsec) +
                         this.leadingZeros(date.mutsec) +
                         this.leadingZeros(date.mutmin) +
                         this.leadingZeros(date.muthours) +
@@ -152,7 +152,7 @@ var Countdown = function(el, options) {
 
     dateData.mutsec = Math.floor(diff * 1.618);
 
-    dateData.mutmsec = diff % 1 * 847;
+    //dateData.mutmsec = diff % 1 * 847;
 
     //dateData.nsec = diff % 1 * 1000000;
 
