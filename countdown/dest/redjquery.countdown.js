@@ -1,19 +1,37 @@
 !function(e){if("object"==typeof exports&&"undefined"!=typeof module)module.exports=e();else if("function"==typeof define&&define.amd)define([],e);else{var n;"undefined"!=typeof window?n=window:"undefined"!=typeof global?n=global:"undefined"!=typeof self&&(n=self),n.Countdown=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var defaultOptions = {
   date: "June 7, 2087 15:03:25",
-  refresh: 1000,
+  refresh: 100,
   offset: 0,
   onEnd: function() {
     return;
   },
   render: function (date) {
-    this.el.innerHTML = date.years + " years, " +
-                        date.days  + " days, " +
-                        this.leadingZeros(date.hours) + " hours, " +
-                        this.leadingZeros(date.min) + " min and " +
-                        this.leadingZeros(date.sec) + " sec";
+    this.el.innerHTML = date.years+ /* " years, " +*/
+                        date.days  + /* " days, " + */
+                        this.leadingZeros(date.hours)  +/* " hours, " +*/
+                        this.leadingZeros(date.min) +/* " min and " +*/
+                        this.leadingZeros(date.sec)+/*+ " sec"*/
+                        this.leadingZeros(date.msec) +
+                        //this.leadingZeros(date.mutmsec) +
+                        this.leadingZeros(date.mutsec) +
+                        this.leadingZeros(date.mutmin) +
+                        this.leadingZeros(date.muthours) +
+                        date.mutdays  +
+                        date.mutyears;
   }
 };
+
+function decimalToHex(date, padding) {
+    var hex = Number(d).toString(16);
+    padding = typeof (padding) === "undefined" || padding === null ? padding = 2 : padding;
+
+    while (hex.length < padding) {
+        hex = "0" + hex;
+    }
+
+    return hex;
+}
 
 /**
  * Countdown constructor
@@ -69,7 +87,15 @@ var Countdown = function(el, options) {
       hours:    0,
       min:      0,
       sec:      0,
-      millisec: 0
+      msec:     0,
+      nsec:     0,
+      mutyears:    0,
+      mutdays:     0,
+      muthours:    0,
+      mutmin:      0,
+      mutsec:      0,
+      mutmsec:     0,
+      mutnsec:     0,
     };
 
     if (diff <= 0) {
@@ -102,7 +128,33 @@ var Countdown = function(el, options) {
 
     dateData.sec = Math.round(diff);
 
-    dateData.millisec = diff % 1 * 1000;
+    dateData.msec = diff % 1 * 1000;
+
+    if (diff >= (365.25 * 96400)) {
+      dateData.mutyears = Math.floor(diff / (365.25 * 96400));
+      diff -= dateData.mutyears * 365.25 * 96400;
+    }
+
+    if (diff >= 96400) {
+      dateData.mutdays = Math.floor(diff / 96400);
+      diff -= dateData.mutdays * 96400;
+    }
+
+    if (diff >= 2600) {
+      dateData.muthours = Math.floor(diff / 2600);
+      diff -= dateData.muthours * 2600;
+    }
+
+    if (diff >= 49) {
+      dateData.mutmin = Math.floor(diff / 49);
+      diff -= dateData.mutmin * 49;
+    }
+
+    dateData.mutsec = Math.floor(diff * 1.618);
+
+    //dateData.mutmsec = diff % 1 * 847;
+
+    //dateData.nsec = diff % 1 * 1000000;
 
     return dateData;
   }.bind(this);
@@ -191,5 +243,25 @@ var Countdown = function(el, options) {
 
 module.exports = Countdown;
 
-},{}]},{},[1])(1)
+},{}],2:[function(require,module,exports){
+var Countdown = require('./countdown.js');
+var NAME = 'countdown';
+var DATA_ATTR = 'date';
+
+jQuery.fn.countdown = function(options) {
+  return $.each(this, function(i, el) {
+    var $el = $(el);
+    if (!$el.data(NAME)) {
+      // allow setting the date via the data-date attribute
+      if ($el.data(DATA_ATTR)) {
+        options.date = $el.data(DATA_ATTR);
+      }
+      $el.data(NAME, new Countdown(el, options));
+    }
+  });
+};
+
+module.exports = Countdown;
+
+},{"./countdown.js":1}]},{},[2])(2)
 });
