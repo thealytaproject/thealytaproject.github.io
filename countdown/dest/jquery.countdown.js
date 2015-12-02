@@ -17,7 +17,7 @@ var defaultOptions = {
   }
 };
 
-function decimalToHex(d, padding) {
+function decimalToHex(date, padding) {
     var hex = Number(d).toString(16);
     padding = typeof (padding) === "undefined" || padding === null ? padding = 2 : padding;
 
