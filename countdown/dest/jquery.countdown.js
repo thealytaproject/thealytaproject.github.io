@@ -7,24 +7,26 @@ var defaultOptions = {
     return;
   },
   render: function (date) {
-    this.el.innerHTML = (date.years.toString(16) + /* " years, " +*/
-                        date.days.toString(16)   + /* " days, " + */
-                        this.leadingZeros(date.hours).toString(16)  +/* " hours, " +*/
-                        this.leadingZeros(date.min).toString(16)  +/* " min and " +*/
-                        this.leadingZeros(date.sec).toString(16)+/*+ " sec"*/
-                        this.leadingZeros(date.msec).toString(16);/*+ " sec"*/).prototype.hashCode = function() {
-  var hash = 0, i, chr, len;
-  if (this.length == 0) return hash;
-  for (i = 0, len = this.length; i < len; i++) {
-    chr   = this.charCodeAt(i);
-    hash  = ((hash << 5) - hash) + chr;
-    hash |= 0; // Convert to 32bit integer
-  }
-  return hash;
-};
+    this.el.innerHTML = date.years+ /* " years, " +*/
+                        date.days  + /* " days, " + */
+                        this.leadingZeros(date.hours)  +/* " hours, " +*/
+                        this.leadingZeros(date.min) +/* " min and " +*/
+                        this.leadingZeros(date.sec)+/*+ " sec"*/
+                        this.leadingZeros(date.msec);/*+ " sec"*/
                         /**this.leadingZeros(date.nsec).toString(16)" sec"*/
   }
 };
+
+function decimalToHex(d, padding) {
+    var hex = Number(d).toString(16);
+    padding = typeof (padding) === "undefined" || padding === null ? padding = 2 : padding;
+
+    while (hex.length < padding) {
+        hex = "0" + hex;
+    }
+
+    return hex;
+}
 
 /**
  * Countdown constructor
