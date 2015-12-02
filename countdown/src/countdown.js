@@ -1,6 +1,6 @@
 var defaultOptions = {
   date: "June 7, 2087 15:03:25",
-  refresh: 1000,
+  refresh: 10000,
   offset: 0,
   onEnd: function() {
     return;
@@ -57,6 +57,17 @@ var Countdown = function(el, options) {
     }
   }
 
+  function makeid()
+{
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for( var i=0; i < 10; i++ )
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
+}
+
   /**
    * Get the difference between now and the end date
    * @return {Object} Object with the diff information (years, days, hours, min, sec, millisec)
@@ -73,6 +84,8 @@ var Countdown = function(el, options) {
       msec:     0,
       nsec:     0,
     };
+
+
 
     if (diff <= 0) {
       if (this.interval) {
