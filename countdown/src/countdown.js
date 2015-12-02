@@ -6,11 +6,11 @@ var defaultOptions = {
     return;
   },
   render: function (date) {
-    this.el.innerHTML = date.years + " years, " +
-                        date.days  + " days, " +
-                        this.leadingZeros(date.hours) + " hours, " +
-                        this.leadingZeros(date.min) + " min and " +
-                        this.leadingZeros(date.sec) + " sec";
+    this.el.innerHTML = date.years + /* " years, " +*/
+                        date.days  + /* " days, " + */
+                        this.leadingZeros(date.hours) +/* " hours, " +*/
+                        this.leadingZeros(date.min) +/* " min and " +*/
+                        this.leadingZeros(date.sec) /*+ " sec"*/;
   }
 };
 
