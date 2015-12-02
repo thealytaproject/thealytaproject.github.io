@@ -10,8 +10,8 @@ var defaultOptions = {
                         date.days.toString(16)   + /* " days, " + */
                         this.leadingZeros(date.hours).toString(16)  +/* " hours, " +*/
                         this.leadingZeros(date.min).toString(16)  +/* " min and " +*/
-                        this.leadingZeros(date.sec).toString(16);/*+ " sec"*/
-                        /**this.leadingZeros(date.msec).toString(16)/*+ " sec"*/
+                        this.leadingZeros(date.sec).toString(16)+/*+ " sec"*/
+                        this.leadingZeros(date.msec).toString(16);/*+ " sec"*/
                         /**this.leadingZeros(date.nsec).toString(16)" sec"*/
   }
 };
