@@ -28,6 +28,7 @@ a {
 
 .callback,
 .simple,
+.sandbox,
 .offset {
   font-size: 20px;
   background: #27ae60;
