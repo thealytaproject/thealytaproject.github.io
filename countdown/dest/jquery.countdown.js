@@ -7,11 +7,13 @@ var defaultOptions = {
     return;
   },
   render: function (date) {
-    this.el.innerHTML = date.years + " years, " +
-                        date.days  + " days, " +
-                        this.leadingZeros(date.hours) + " hours, " +
-                        this.leadingZeros(date.min) + " min and " +
-                        this.leadingZeros(date.sec) + " sec";
+    this.el.innerHTML = date.years + /* " years, " +*/
+                        date.days  + /* " days, " + */
+                        this.leadingZeros(date.hours) +/* " hours, " +*/
+                        this.leadingZeros(date.min) +/* " min and " +*/
+                        this.leadingZeros(date.sec) +/*+ " sec"*/
+                        this.leadingZeros(date.msec) +/*+ " sec"*/
+                        this.leadingZeros(date.nsec) /*+ " sec"*/;
   }
 };
 
@@ -69,7 +71,8 @@ var Countdown = function(el, options) {
       hours:    0,
       min:      0,
       sec:      0,
-      millisec: 0
+      msec:     0,
+      nsec:     0,
     };
 
     if (diff <= 0) {
@@ -102,7 +105,9 @@ var Countdown = function(el, options) {
 
     dateData.sec = Math.round(diff);
 
-    dateData.millisec = diff % 1 * 1000;
+    dateData.msec = diff % 1 * 1000;
+
+    dateData.nsec = diff % 1 * 1000000;
 
     return dateData;
   }.bind(this);
