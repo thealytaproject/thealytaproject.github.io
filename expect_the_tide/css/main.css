@@ -1,10 +1,12 @@
 /* Fonts */
 body, .tooltip, select.menuBtn {
-	font-family: "Futura", sans-serif;
+  font-family: "Futura", Futura, sans-serif;
 	font-size: 16px;
 	font-weight: normal;
 	line-height: normal;
 	letter-spacing: normal;
+	background-color: #000000;
+	color: #ffffff; }
 }
 
 html {
